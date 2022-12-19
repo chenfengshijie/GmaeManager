@@ -37,6 +37,9 @@
          </item>
          <item>
           <widget class="QLineEdit" name="lineEdit">
+           <property name="focusPolicy">
+            <enum>Qt::NoFocus</enum>
+           </property>
            <property name="placeholderText">
             <string>1200</string>
            </property>
@@ -55,6 +58,9 @@
          </item>
          <item>
           <widget class="QLineEdit" name="lineEdit_2">
+           <property name="focusPolicy">
+            <enum>Qt::NoFocus</enum>
+           </property>
            <property name="placeholderText">
             <string>firefox</string>
            </property>
@@ -116,6 +122,9 @@
            <property name="enabled">
             <bool>true</bool>
            </property>
+           <property name="focusPolicy">
+            <enum>Qt::NoFocus</enum>
+           </property>
           </widget>
          </item>
         </layout>
@@ -130,7 +139,11 @@
           </widget>
          </item>
          <item>
-          <widget class="QLineEdit" name="lineEdit_5"/>
+          <widget class="QLineEdit" name="lineEdit_5">
+           <property name="placeholderText">
+            <string extracomment="默认邮箱">495964337@qq.com</string>
+           </property>
+          </widget>
          </item>
         </layout>
        </item>

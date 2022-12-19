@@ -1,19 +1,22 @@
 {
-    "Setting": {
-        "User": ["myself"],
-        "Game": [],
-        "Time": 120,
-        "EmailAddress":"13359701229@163.com",
-        "EmailHost":"smtp.163.com",
-        "EmailPassword":"VTJHAZWHAVWWDVXL",
-        "Password": "123456789"
-    },
-    "User_info":{
-        "frozeworld": {
-            "Time":120,
-            "Description":"just for demonstration",
-            "EmailAddress":"495964337@qq.com"
-        }
-
+  "Setting": {
+    "User": [
+      "myself"
+    ],
+    "Game": [
+      ""
+    ],
+    "Time": 120,
+    "EmailAddress": "13359701229@163.com",
+    "EmailHost": "smtp.163.com",
+    "EmailPassword": "VTJHAZWHAVWWDVXL",
+    "Password": "123456"
+  },
+  "User_info": {
+    "frozeworld": {
+      "Time": 120,
+      "Description": "just for demonstration",
+      "EmailAddress": "495964337@qq.com"
     }
+  }
 }
