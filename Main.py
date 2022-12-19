@@ -8,6 +8,7 @@ import sys
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtWidgets import QApplication, QMainWindow, QMessageBox
 from PyQt5.QtCore import QDateTime, QTimer
+import re
 
 
 class MyMainWindow(QMainWindow, Ui_MainWindow):
@@ -52,6 +53,18 @@ class MyMainWindow(QMainWindow, Ui_MainWindow):
     def modify_time(self):
         self.game_manager.update_time(self.flush_time)
         self.lineEdit_4.setText(str(self.game_manager.used_time))
+
+    def send_email(self):
+        mail = self.lineEdit_5.text()
+        re_mail = "^[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$"
+        re_mail = re.compile(re_mail)
+
+        if re_mail.match(mail):
+            dic = {"User": self.game_manager.current_user, "Used_time": self.game_manager.used_time}
+            self.game_manager.email.send_email(info=dic,sender=self.game_manager.email,receivers=mail)
+            QMessageBox.information(self.menubar, "提示", "邮件发送成功", QMessageBox.Cancel, QMessageBox.Cancel)
+        else:
+            QMessageBox.information(self.menubar, "提示", "请输入正确的邮箱", QMessageBox.Cancel, QMessageBox.Cancel)
 
 
 if __name__ == "__main__":
