@@ -26,9 +26,9 @@ class GameManager:
         """update time every flush time
         """
         for game in self.game:
-            cmd = "ps -ef | grep " + game + "| grep -V grep"  # 该命令判断给定程序是否运行
-            f = os.popen(cmd)
-            if f.read() != "":
+            cmd = "ps -ef | grep " + game + "| grep -v grep"  # 该命令判断给定程序是否运行
+            f = os.popen(cmd).read()
+            if f.strip() != "":
                 self.used_time += flush_time / 1000  # 每隔flush_time分钟更新
                 break
         if self.used_time > self.time:
@@ -42,7 +42,9 @@ class GameManager:
         # 禁止在晚上10点之后使用电脑
         now = datetime.datetime.now()
         flag = now.strftime("%H")
-        if int(flag) > 22:
+        cmd = "ps -ef | grep " + game + "| grep -v grep"  # 该命令判断给定程序是否运行
+        f = os.popen(cmd).read()
+        if int(flag) > 22 and f.strip() != "":
             self.__kill_game()
             # 发送邮件   
             info = "your child {} plays games after 22:00".format(self.current_user)
@@ -50,7 +52,7 @@ class GameManager:
             receiver = self.setting[self.current_user]["EmailAddress"]
             self.email.send_email(info, sender, receiver)
 
-    def __save_files(self):
+    def save_files(self):
         """save files
         """
         self.setting[self.current_user]["Time"] = self.used_time
